@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Company Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head><br>
+  <div class="container">
+  <div class="row"><br>
+    <%= form_for ([@payment.invoice, @payment]) do |f| %>
+    <% if @payment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+     
+        <ul>
+        <% @payment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <div class="field">
+        <%= f.label "amount (USD)" %><br>
+        <%= f.text_field :amount, placeholder: 'Enter amount (USD)' %>
+      </div>
+      <div class="field">
+        <%= f.label :date %><br>
+        <%= f.date_select :date %>
+      </div>
+      <div class="field">
+        <%= f.label :invoice_id %><br>
+        <%= f.text_field :invoice_id %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+ </div>

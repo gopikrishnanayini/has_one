@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <!-- Theme Made By www.w3schools.com - No Copyright
+    -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">/</link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <br/>
+        <div class="container">
+          <div class="row">
+            <br/>
+            <p id="notice">
+              <%= notice %>
+            </p>
+            <p>
+              <strong>Amount:</strong>
+              <%= get_converted_amount(@payment.amount.to_f) %>
+            </p>
+            <p>
+              <strong>Date:</strong>
+              <%= @payment.date %>
+            </p>
+            <p>
+              <strong>Invoice Id:</strong>
+              <%= @payment.invoice_id %>
+            </p>
+            <%= link_to 'Back', invoices_path %>
+            <%= link_to 'Edit payment', edit_invoice_payment_path(:invoice_id => @payment.invoice.id, :id => @payment.id) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

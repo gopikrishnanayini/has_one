@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <!-- Theme Made By www.w3schools.com - No Copyright
+    -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <br/>
+    <div class="container">
+      <div class="row">
+        <%= form_for(@invoice) do |f| %>
+          <% if @invoice.errors.any? %>
+            <div id="error_explanation">
+              <h2>
+                <%= pluralize(@invoice.errors.count, "error") %>
+                prohibited this invoice from being saved:
+              </h2>
+              <ul>
+                <% @invoice.errors.full_messages.each do |message| %>
+                  <li>
+                    <%= message %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field">
+            <%= f.label :number %>
+            <br/>
+            <%= f.number_field :number, placeholder: 'Select Number)'%>
+          </div>
+          <div class="field">
+            <%= f.label "Amount (USD)" %>
+            <br/>
+            <%= f.text_field :amount, placeholder: 'Enter amount (USD)' %>
+          </div>
+          <div class="field">
+            <%= f.label :date %>
+            <br/>
+            <%= f.date_select :date %>
+          </div>
+          <div class="field">
+            <%= f.label :to_address %>
+            <br/>
+            <%= f.text_field :to_address, placeholder: 'Enter To address' %>
+          </div>
+          <div class="field">
+            <%= f.label :from_address %>
+            <br/>
+            <%= f.text_field :from_address, placeholder: 'Enter From Address' %>
+          </div>
+          <div class="field">
+            <%= f.label :notes %>
+            <br/>
+            <%= f.text_field :notes, placeholder: 'Enter Notes' %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>
