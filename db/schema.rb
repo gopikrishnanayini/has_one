@@ -13,41 +13,38 @@
 
 ActiveRecord::Schema.define(version: 20171117103843) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "invoices", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "amount"
+    t.integer  "number",       limit: 4
+    t.string   "amount",       limit: 255
     t.date     "date"
-    t.string   "to_address"
-    t.string   "from_address"
-    t.string   "notes"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "to_address",   limit: 255
+    t.string   "from_address", limit: 255
+    t.string   "notes",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "payments", force: :cascade do |t|
-    t.string   "amount"
+    t.string   "amount",     limit: 255
     t.date     "date"
-    t.integer  "invoice_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "invoice_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
