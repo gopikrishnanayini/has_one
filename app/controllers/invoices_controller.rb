@@ -8,6 +8,11 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @invoices.to_json }
+      format.csv { render text: @invoices.to_csv }
+      format.xls do
+        only_columns = [:number, :amount, :date, :to_address, :from_address, :notes]
+        send_data @invoices.to_xls(:only => only_columns)
+      end
     end
   end
 

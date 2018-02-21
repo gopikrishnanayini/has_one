@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Number</Data></Cell>
+        <Cell><Data ss:Type="String">Amount(GBP)</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">To address</Data></Cell>
+        <Cell><Data ss:Type="String">From address</Data></Cell>
+        <Cell><Data ss:Type="String">Notes</Data></Cell>
+      </Row>
+    <% @invoices.each do |invoice| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= invoice.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= invoice.number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= get_converted_amount(invoice.amount.to_f) %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= invoice.date %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= invoice.to_address %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%=invoice.from_address %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%=invoice.notes %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

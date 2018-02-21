@@ -52,3 +52,8 @@
 
   </div>
 </div>
+<p>
+  Download:
+  <%= link_to "CSV", invoices_path(format: "csv") %> |
+  <%= link_to "Excel", invoices_path(format: "xls") %>
+</p>
