@@ -76,3 +76,4 @@ class InvoicesController < ApplicationController
       request.format.json?
     end
 end
+#http://railscasts.com/episodes/362-exporting-csv-and-excel?view=asciicast
